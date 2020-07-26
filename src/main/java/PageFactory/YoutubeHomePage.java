@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.AttributeUtils;
+import util.DataUtils;
 
 public class YoutubeHomePage {
     public static final String URL = "https://www.youtube.com/";
@@ -39,6 +40,8 @@ public class YoutubeHomePage {
     WebElement darkThemeToggleButton;
     @FindBy(css = "html")
     WebElement htmlRoot;
+    @FindBy(css="yt-page-navigation-progress")
+    WebElement progressBar;
 
 
     public YoutubeHomePage(WebDriver webDriver) {
@@ -66,7 +69,7 @@ public class YoutubeHomePage {
     }
 
     public void waitForProgressBar() {
-
+        AttributeUtils.waitForCommentsProgressToHidden(webDriver,progressBar,"hidden");
     }
 
     public void clearSearchFiled() {

@@ -4,7 +4,7 @@
     <test name="ChromeTest">
         <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="test.TestYoutubeCommentsOrder"/>
+            <class name="test.TestYoutubeSearchQuery"/>
         </classes>
     </test>
 <!--    <test name="FirefoxTest">-->
