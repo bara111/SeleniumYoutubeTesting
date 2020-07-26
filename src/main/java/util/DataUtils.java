@@ -2,7 +2,7 @@ package util;
 
 import java.util.ArrayList;
 
-public class Converters {
+public class DataUtils {
     public static String convertQueryToString(String[] url) {
         String newQuery = url[1].replaceAll("\\+", " ");
         return newQuery.replaceAll("%2B", "+");
@@ -34,5 +34,18 @@ public class Converters {
             }
         }
         return timeInDays;
+    }
+
+   public static boolean isSorted(ArrayList<Double> list) {
+        boolean isSorted = false;
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (list.get(i) < list.get(i + 1)) {
+                isSorted = true;
+            } else {
+                isSorted = false;
+                break;
+            }
+        }
+        return isSorted;
     }
 }

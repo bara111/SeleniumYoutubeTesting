@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class InfrastructureUtil {
+public class AttributeUtils {
 
     public static Boolean isAttributeHidden(WebElement webElement, String attribute) {
         boolean result = false;

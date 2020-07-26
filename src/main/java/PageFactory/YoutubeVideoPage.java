@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import util.Converters;
-import util.InfrastructureUtil;
+import util.DataUtils;
+import util.AttributeUtils;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class YoutubeVideoPage {
 
 
     public Boolean popUpContainerHasFocusedAttribute() {
-        return InfrastructureUtil.isAttributeHidden(popUpContainer, hiddenAttribute);
+        return AttributeUtils.isAttributeHidden(popUpContainer, hiddenAttribute);
     }
 
     public void clickSortBy() {
@@ -55,11 +55,10 @@ public class YoutubeVideoPage {
 
     public void clickNewestCommentOption() {
         this.mouseActionHandling.click(newestCommentsOption);
-
     }
 
     public void waitForCommentsProgressToHidden() {
-        InfrastructureUtil.waitForCommentsProgressToHidden(webDriver, progressBar, hiddenAttribute);
+        AttributeUtils.waitForCommentsProgressToHidden(webDriver, progressBar, hiddenAttribute);
     }
 
     public void getCommentsTime(int numberOfComments) {
@@ -71,20 +70,7 @@ public class YoutubeVideoPage {
     }
 
     public boolean checkSoringComments() {
-        commentsListTimeInDays = Converters.convertListOfStringToDoubleTimeUnit(commentsListTimeText);
-        return isSorted(commentsListTimeInDays);
-    }
-
-    boolean isSorted(ArrayList<Double> list) {
-        boolean isSorted = false;
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i) < list.get(i + 1)) {
-                isSorted = true;
-            } else {
-                isSorted = false;
-                break;
-            }
-        }
-        return isSorted;
+        commentsListTimeInDays = DataUtils.convertListOfStringToDoubleTimeUnit(commentsListTimeText);
+        return DataUtils.isSorted(commentsListTimeInDays);
     }
 }

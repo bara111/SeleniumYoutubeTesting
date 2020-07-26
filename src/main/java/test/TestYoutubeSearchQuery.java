@@ -6,7 +6,7 @@ import infrastructure.YoutubeSearchQueryDataProvider;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import util.Converters;
+import util.DataUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +23,6 @@ public class TestYoutubeSearchQuery {
         driver = WebDriverConfiguration.setup(browser);
         youtubeHomePage = new YoutubeHomePage(driver);
         driver.get(YoutubeHomePage.URL);
-
     }
 
     @BeforeMethod
@@ -37,7 +36,7 @@ public class TestYoutubeSearchQuery {
         youtubeHomePage.waitForProgressBar();
         String[] url = driver.getCurrentUrl().split("=");
         driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-        Assert.assertEquals(Converters.convertQueryToString(url), expectedQuery);
+        Assert.assertEquals(DataUtils.convertQueryToString(url), expectedQuery);
     }
 
     @AfterTest

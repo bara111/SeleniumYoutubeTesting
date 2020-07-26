@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.InfrastructureUtil;
+import util.AttributeUtils;
 
 public class YoutubeHomePage {
     public static final String URL = "https://www.youtube.com/";
@@ -90,17 +90,17 @@ public class YoutubeHomePage {
 
     public Boolean isDrawerOpened() {
         String openAttribute = "opened";
-        return InfrastructureUtil.isAttributeHidden(appDrawersDiv, openAttribute);
+        return AttributeUtils.isAttributeHidden(appDrawersDiv, openAttribute);
     }
 
     public Boolean toolTipHasDisableUpgrade() {
         String disableUpgradeAttribute = "disable-upgrade";
-        return InfrastructureUtil.isAttributeHidden(tooltip, disableUpgradeAttribute);
+        return AttributeUtils.isAttributeHidden(tooltip, disableUpgradeAttribute);
     }
 
     public Boolean toolDarkAttribute() {
         String darkAttribute = "dark";
-        return InfrastructureUtil.isAttributeHidden(htmlRoot, darkAttribute);
+        return AttributeUtils.isAttributeHidden(htmlRoot, darkAttribute);
     }
 
 

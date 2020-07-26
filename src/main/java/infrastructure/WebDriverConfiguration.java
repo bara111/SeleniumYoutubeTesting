@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverConfiguration {
 
     public static WebDriver driver;
-    
+
     public static WebDriver setup(String browser) {
         if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
