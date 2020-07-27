@@ -1,17 +1,12 @@
 package reports;
 
-import atu.testrecorder.ATUTestRecorder;
-import atu.testrecorder.exceptions.ATUTestRecorderException;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -82,11 +77,11 @@ public class CustomReporter implements ITestListener, IReporter {
 
             try {
                 passedTestWriter = new PrintWriter(new File(passedTestFilePath));
-                passedTestWriter.write(Constants.startHtmlPassedTest);
+                passedTestWriter.write(HtmlUtil.startHtmlPassedTest);
                 failedTestWriter = new PrintWriter(new File(failedTestFilePath));
-                failedTestWriter.write(Constants.startHtmlFailedTest);
+                failedTestWriter.write(HtmlUtil.startHtmlFailedTest);
                 skippedTestWriter = new PrintWriter(new File(skippedTestFilePath));
-                skippedTestWriter.write(Constants.startHtmlSkippedTest);
+                skippedTestWriter.write(HtmlUtil.startHtmlSkippedTest);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -118,13 +113,13 @@ public class CustomReporter implements ITestListener, IReporter {
             }
 
             if (passedTestWriter != null) {
-                passedTestWriter.write(Constants.endHtml);
+                passedTestWriter.write(HtmlUtil.endHtml);
             }
             if (failedTestWriter != null) {
-                failedTestWriter.write(Constants.endHtml);
+                failedTestWriter.write(HtmlUtil.endHtml);
             }
             if (skippedTestWriter != null) {
-                skippedTestWriter.write(Constants.endHtml);
+                skippedTestWriter.write(HtmlUtil.endHtml);
             }
 
 

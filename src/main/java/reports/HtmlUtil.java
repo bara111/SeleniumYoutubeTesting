@@ -1,6 +1,6 @@
 package reports;
 
-public class Constants {
+public class HtmlUtil {
     public static final String startHtmlPassedTest ="<!DOCTYPE html>" +
             "<html lang=\"en\" dir=\"ltr\">" +
             "<head>" +
