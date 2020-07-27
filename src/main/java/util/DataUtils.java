@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class DataUtils {
     public static String convertQueryToString(String[] url) {
         String newQuery = url[1].replaceAll("\\+", " ");
-        //.replaceAll("%2B", "+");
-        return newQuery;
+        return newQuery.replaceAll("%2B", "+");
     }
 
     public static ArrayList<Double> convertListOfStringToDoubleTimeUnit(ArrayList<String> list) {

@@ -1,7 +1,6 @@
 package test;
 
 import PageFactory.YoutubeHomePage;
-import atu.testrecorder.ATUTestRecorder;
 import atu.testrecorder.exceptions.ATUTestRecorderException;
 import infrastructure.WebDriverConfiguration;
 import infrastructure.YoutubeSearchQueryDataProvider;
@@ -29,7 +28,6 @@ public class TestYoutubeSearchQuery {
         this.browser = browser;
         webDriverConfiguration =new WebDriverConfiguration();
          methodName = getClass().getSimpleName();
-
         driver = webDriverConfiguration.setup(browser,methodName);
         youtubeHomePage = new YoutubeHomePage(driver);
         driver.get(YoutubeHomePage.URL);

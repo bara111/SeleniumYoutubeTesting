@@ -13,7 +13,7 @@ import util.AttributeUtils;
 import java.util.ArrayList;
 
 public class YoutubeVideoPage {
-    public String URL = "https://www.youtube.com";
+    public  String URL = "https://www.youtube.com";
     WebDriver webDriver;
     ArrayList<String> commentsListTimeText;
     ArrayList<Double> commentsListTimeInDays;

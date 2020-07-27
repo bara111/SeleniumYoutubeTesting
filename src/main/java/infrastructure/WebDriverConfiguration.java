@@ -16,35 +16,34 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverConfiguration {
+    private final String BASE_PATH = "src\\testVideos\\";
+    private final DateFormat DATE_FORMAT = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
+    private final Date date = new Date();
+    private final String CURRENT_TIME_DATE = DATE_FORMAT.format(date);
 
     public WebDriver driver;
     public ATUTestRecorder recorder;
-    private DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
-    private Date date = new Date();
-    private String timeOfTheDay=dateFormat.format(date);
-    private String basePath = "src\\testVideos\\";
     private String filePath;
-    private String extensionName=".mov";
     public WebDriver setup(String browser,String fileName) {
         if (browser.equalsIgnoreCase("firefox")) {
-            this.filePath = fileName+timeOfTheDay ;
+            this.filePath = fileName+ CURRENT_TIME_DATE;
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("-private");
             System.setProperty("webdriver.gecko.driver", "src\\geckodriver.exe");
             try {
-                recorder = new ATUTestRecorder(basePath, filePath, false);
+                recorder = new ATUTestRecorder(BASE_PATH, filePath, false);
                 recorder.start();
             } catch (ATUTestRecorderException e) {
                 e.printStackTrace();
             }
             driver = new FirefoxDriver(options);
         } else if (browser.equalsIgnoreCase("chrome")) {
-            this.filePath = fileName+timeOfTheDay;
+            this.filePath = fileName+ CURRENT_TIME_DATE;
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--incognito");
             System.setProperty("webdriver.chrome.driver", "src\\chromedriver.exe");
             try {
-                recorder = new ATUTestRecorder(basePath, filePath, false);
+                recorder = new ATUTestRecorder(BASE_PATH, filePath, false);
                 recorder.start();
             } catch (ATUTestRecorderException e) {
                 e.printStackTrace();
@@ -59,7 +58,8 @@ public class WebDriverConfiguration {
     }
 
     public void deleteVideo() {
-        File file = new File(basePath + filePath + extensionName);
+        String EXTENSION_NAME = ".mov";
+        File file = new File(BASE_PATH + filePath + EXTENSION_NAME);
         file.delete();
     }
 }
