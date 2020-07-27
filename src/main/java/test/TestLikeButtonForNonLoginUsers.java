@@ -5,19 +5,26 @@ import PageFactory.YoutubeVideoPage;
 import infrastructure.WebDriverConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import java.lang.reflect.Method;
 
 public class TestLikeButtonForNonLoginUsers {
+    WebDriverConfiguration webDriverConfiguration=new WebDriverConfiguration();
+
     YoutubeVideoPage youtubeVideoPage;
     WebDriver webDriver;
+    String methodName="";
+
+    @BeforeMethod
+    public void before(Method method) {
+        methodName=method.getName();
+    }
 
     @BeforeTest
     @Parameters("browser")
     public void setup(String browser) {
-        webDriver = WebDriverConfiguration.setup(browser);
+        webDriver = webDriverConfiguration.setup(browser,methodName);
         youtubeVideoPage = new YoutubeVideoPage(webDriver,"/watch?v=wtg7AetxuWo");
         webDriver.get(YoutubeHomePage.URL);
     }
@@ -25,7 +32,7 @@ public class TestLikeButtonForNonLoginUsers {
     @Test
     @Parameters("browser")
     public void testLikeButtonForNonLoginUsers(String browser) {
-        webDriver=WebDriverConfiguration.setup(browser);
+        webDriver = webDriverConfiguration.setup(browser,methodName);
         youtubeVideoPage=new YoutubeVideoPage(webDriver,"/watch?v=wAPCSnAhhC8");
         webDriver.get(youtubeVideoPage.URL);
         youtubeVideoPage.clickLikeButton();

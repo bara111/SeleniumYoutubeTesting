@@ -4,19 +4,26 @@ import PageFactory.YoutubeHomePage;
 import infrastructure.WebDriverConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import java.lang.reflect.Method;
 
 public class TestYoutubeSearchBarSize {
+    WebDriverConfiguration webDriverConfiguration=new WebDriverConfiguration();
+
     YoutubeHomePage youtubeHomePage;
     WebDriver webDriver;
+    String methodName="";
+
+    @BeforeMethod
+    public void before(Method method) {
+        methodName=method.getName();
+    }
 
     @BeforeTest
     @Parameters("browser")
     public void setup(String browser) {
-        webDriver = WebDriverConfiguration.setup(browser);
+        webDriver = webDriverConfiguration.setup(browser,methodName);
         youtubeHomePage = new YoutubeHomePage(webDriver);
         webDriver.get(YoutubeHomePage.URL);
     }
